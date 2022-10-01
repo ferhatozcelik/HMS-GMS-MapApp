@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/hms_map_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="HMS Map" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/gms_map_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="GMS Map"/>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/hms_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/header_layout"
         android:visibility="visible">
 
         <com.huawei.hms.maps.MapView
             android:id="@+id/huaweiMapView"
-            map:uiCompass="true"
-            map:uiZoomControls="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            map:uiCompass="true"
+            map:uiZoomControls="true" />
 
     </RelativeLayout>
 
@@ -26,7 +50,8 @@
         android:id="@+id/gms_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:layout_below="@+id/header_layout"
+        android:visibility="visible">
 
         <fragment
             android:id="@+id/map_fragment"
@@ -38,7 +63,5 @@
 
 
     </RelativeLayout>
-
-
 
 </RelativeLayout>

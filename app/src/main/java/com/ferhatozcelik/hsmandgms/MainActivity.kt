@@ -24,31 +24,48 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, com.google.android
     private lateinit var marker: Marker
     private lateinit var cameraUpdate: CameraUpdate
     private lateinit var cameraPosition: CameraPosition
-
     private lateinit var mapFragment: com.google.android.gms.maps.SupportMapFragment
     private var hardService: String? = null
+    var mapViewBundle: Bundle? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var mapViewBundle: Bundle? = null
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAP_BUNDLE_KEY)
         }
 
        if (isHmsAvailable(this)){
+           ChangeMap("HMS")
+        }else{
+           ChangeMap("GMS")
+        }
+
+        binding.apply {
+            gmsMapButton.setOnClickListener {
+                ChangeMap("GMS")
+            }
+            hmsMapButton.setOnClickListener {
+                ChangeMap("HMS")
+            }
+        }
+
+    }
+
+    fun ChangeMap(isMap: String) {
+        if(isMap == "HMS"){
             binding.huaweiMapView.onCreate(mapViewBundle)
             binding.huaweiMapView.getMapAsync(this)
             binding.gmsLayout.visibility = View.GONE
             binding.hmsLayout.visibility = View.VISIBLE
-        }else{
-           mapFragment = (supportFragmentManager.findFragmentById(R.id.map_fragment) as com.google.android.gms.maps.SupportMapFragment?)!!
-           mapFragment.getMapAsync(this)
-           binding.hmsLayout.visibility = View.GONE
-           binding.gmsLayout.visibility = View.VISIBLE
-        }
+        }else if(isMap == "GMS"){
+            mapFragment = (supportFragmentManager.findFragmentById(R.id.map_fragment) as com.google.android.gms.maps.SupportMapFragment?)!!
+            mapFragment.getMapAsync(this)
+            binding.hmsLayout.visibility = View.GONE
+            binding.gmsLayout.visibility = View.VISIBLE
 
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
