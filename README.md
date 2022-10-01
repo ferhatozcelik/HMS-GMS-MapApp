@@ -1,4 +1,4 @@
-<h1 align="center">Google MAPS Kit and Huawei MAPS APP</h1>
+<h1 align="center">Google MAPS and Huawei MAPS APP</h1>
 
 <ul>
   <li>HMS stands for Huawei Mobile Services</li>
@@ -15,10 +15,10 @@ Author
 👤 Ferhat OZCELIK
 
 Github: @ferhatozcelik
-LinkedIn: @https://www.linkedin.com/in/ferhatozcelik/
+LinkedIn:https://www.linkedin.com/in/ferhatozcelik/
 Show your support
 Give a ⭐️ if this project helped you!
 
 📝 License
-Copyright © 2022 Hunter.
+Copyright © 2022 Ferhat OZCELIK.
 This project is Apache License, Version 2.0 (the "License") licensed.
